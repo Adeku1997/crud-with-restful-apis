@@ -12,7 +12,7 @@ class CountryController extends Controller
      * get all countries
      * @return \Illuminate\Http\JsonResponse
      */
-    public function country(): \Illuminate\Http\JsonResponse
+    public function index(): \Illuminate\Http\JsonResponse
     {
         return response()->json(CountryModel::all(),200);
 
@@ -24,7 +24,7 @@ class CountryController extends Controller
      * @param $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function countryById($id): \Illuminate\Http\JsonResponse
+    public function show($id): \Illuminate\Http\JsonResponse
     {
         $country = CountryModel::find($id);
         if(is_null($country)){
@@ -39,7 +39,7 @@ class CountryController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function countrySave(Request $request): \Illuminate\Http\JsonResponse
+    public function create(Request $request): \Illuminate\Http\JsonResponse
     {
         $rules=[
             'name' => 'required|min:3',
@@ -61,7 +61,7 @@ class CountryController extends Controller
      * @param $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function countryUpdate( Request $request ,$id): \Illuminate\Http\JsonResponse
+    public function update( Request $request ,$id): \Illuminate\Http\JsonResponse
     {
         $country = CountryModel::find($id);
         if(is_null($country)){
@@ -78,7 +78,7 @@ class CountryController extends Controller
      * @param $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function countryDelete(Request $request,$id): \Illuminate\Http\JsonResponse
+    public function destroy(Request $request,$id): \Illuminate\Http\JsonResponse
     {
         $country = CountryModel::find($id);
         if(is_null($country)){
